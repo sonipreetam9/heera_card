@@ -8,9 +8,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SDashboardController;
-use App\Http\Controllers\SAuthController;
+use App\Http\Controllers\SSAuthController;
 use App\Http\Controllers\SProfileController;
 use App\Http\Controllers\EmployeeController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,31 @@ use App\Http\Controllers\EmployeeController;
 */
 
 
+Route::get('/optimize', function () {
+    // Clear all caches
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('optimize:clear');
+
+    // Re-optimize the application
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    Artisan::call('view:cache');
+    Artisan::call('optimize');
+
+    return '✅ सभी कैश और कॉन्फ़िगरेशन सफलतापूर्वक क्लियर और ऑप्टिमाइज़ कर दिए गए हैं!';
+});
+
+
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
 
-Route::get('/super_admin', [SAuthController::class, 'login_page'])->name('super.login');
-Route::post('/super_admin', [SAuthController::class, 'check_login'])->name('super.post.login');
-Route::get('/super_admin/register', [SAuthController::class, 'register_page'])->name('super.register');
-Route::post('/super_admin/register', [SAuthController::class, 'register_post'])->name('super.post.register');
+Route::get('/super_admin', [SSAuthController::class, 'login_page'])->name('super.login');
+Route::post('/super_admin', [SSAuthController::class, 'check_login'])->name('super.post.login');
+Route::get('/super_admin/register', [SSAuthController::class, 'register_page'])->name('super.register');
+Route::post('/super_admin/register', [SSAuthController::class, 'register_post'])->name('super.post.register');
 
 Route::group(
     ['middleware' => 'guest'],
@@ -56,7 +75,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 Route::group(
     ['prefix' => 'super_admin', 'middleware' => ['admin']],
     function () {
-        Route::get('/logout', [SAuthController::class, 'logout'])->name('super.logout');
+        Route::get('/logout', [SSAuthController::class, 'logout'])->name('super.logout');
         Route::get('/dashboard', [SDashboardController::class, 'dashboard'])->name('super.dashboard');
 
         Route::get('/profile', [SProfileController::class, 'profile'])->name('super.profile');

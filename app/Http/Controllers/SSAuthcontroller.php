@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Str;
-class SAuthcontroller extends Controller
+class SSAuthcontroller extends Controller
 {
      public function login_page()
     {
@@ -55,7 +55,7 @@ class SAuthcontroller extends Controller
 
 
 
-        
+
         Auth::guard('admin')->logout();
 
 
