@@ -51,10 +51,11 @@ class SAuthcontroller extends Controller
 
     public function logout(Request $request)
     {
-       
 
 
 
+
+        
         Auth::guard('admin')->logout();
 
 
