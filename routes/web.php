@@ -8,7 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SDashboardController;
-use App\Http\Controllers\SSAuthController;
+use App\Http\Controllers\SSAuthcontroller;
 use App\Http\Controllers\SProfileController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Artisan;
@@ -46,10 +46,10 @@ Route::get('/optimize', function () {
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
 
-Route::get('/super_admin', [SSAuthController::class, 'login_page'])->name('super.login');
-Route::post('/super_admin', [SSAuthController::class, 'check_login'])->name('super.post.login');
-Route::get('/super_admin/register', [SSAuthController::class, 'register_page'])->name('super.register');
-Route::post('/super_admin/register', [SSAuthController::class, 'register_post'])->name('super.post.register');
+Route::get('/super_admin', [SSAuthcontroller::class, 'login_page'])->name('super.login');
+Route::post('/super_admin', [SSAuthcontroller::class, 'check_login'])->name('super.post.login');
+Route::get('/super_admin/register', [SSAuthcontroller::class, 'register_page'])->name('super.register');
+Route::post('/super_admin/register', [SSAuthcontroller::class, 'register_post'])->name('super.post.register');
 
 Route::group(
     ['middleware' => 'guest'],
@@ -75,7 +75,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 Route::group(
     ['prefix' => 'super_admin', 'middleware' => ['admin']],
     function () {
-        Route::get('/logout', [SSAuthController::class, 'logout'])->name('super.logout');
+        Route::get('/logout', [SSAuthcontroller::class, 'logout'])->name('super.logout');
         Route::get('/dashboard', [SDashboardController::class, 'dashboard'])->name('super.dashboard');
 
         Route::get('/profile', [SProfileController::class, 'profile'])->name('super.profile');
