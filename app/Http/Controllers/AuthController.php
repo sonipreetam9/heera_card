@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function login_page()
     {
         if (Auth::check()) {
-            return redirect()->route('home.page');
+            return redirect()->route('dashboard');
         }
         return view('software.auth.login');
     }
@@ -112,6 +112,7 @@ class AuthController extends Controller
                 'phone' => $request->phone,
                 'city' => $request->city,
                 'address' => $request->address,
+                'verify' => 1,
                 'password' => Hash::make($request->password),
                 'in_hash' => base64_encode($request->password),
             ]);

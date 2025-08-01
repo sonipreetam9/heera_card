@@ -11,20 +11,22 @@ class EmployeeModel extends Model
     protected $table = 'employee';
 
     protected $fillable = [
-    'branch_id',
-    'name',
-    'phone',
-    'address',
-    'city',
-    'tag_id',
-    'dob',
-    'join_date',
-    'expire_date',
-    'occupation',
-    'age',
-    'sex',
-    'image',
-    'verify',
-];
+        'branch_id',
+        'name',
+        'phone',
+        'address',
+        'city',
+        'tag_id',
+        'dob',
+        'join_date',
+        'expire_date',
+        'fees',
+        'age',
+        'sex',
+        'image',
+        'verify',
+    ];
+ 
+
 
 }

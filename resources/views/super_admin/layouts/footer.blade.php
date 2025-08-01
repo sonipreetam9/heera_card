@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Techgeometry Pvt Ltd.
+                    Design & Develop by Starnext Technologies Pvt. Ltd.
                 </div>
             </div>
         </div>

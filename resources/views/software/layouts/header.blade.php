@@ -52,19 +52,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="{{ route('dashboard') }}" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{ asset($small_logo) }}" alt="" height="22">
+                                    <img src="{{ asset($dashboard_logo) }}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset($small_logo) }}" alt="" height="17">
+                                    <img src="{{ asset($dashboard_logo) }}" alt="" height="17">
                                 </span>
                             </a>
 
                             <a href="{{ route('dashboard') }}" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{ asset($small_logo) }}" alt="" height="22">
+                                    <img src="{{ asset($dashboard_logo) }}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset($small_logo) }}" alt="" height="17">
+                                    <img src="{{ asset($dashboard_logo) }}" alt="" height="17">
                                 </span>
                             </a>
                         </div>
@@ -115,21 +115,21 @@
                                     <span class="text-start ms-xl-2">
                                         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{
                                             Auth::user()->name }} {{ Auth::user()->nickname }}</span>
-                                        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                                        {{-- <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span> --}}
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <h6 class="dropdown-header">Welcome {{ Auth::user()->name }} !</h6>
-                                <a class="dropdown-item" href="pages-profile.html"><i
+                                <a class="dropdown-item" href="{{ route('profile') }}"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
 
-                                <a class="dropdown-item" href="pages-profile-settings.html"><span
+                                {{-- <a class="dropdown-item" href="pages-profile-settings.html"><span
                                         class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                         class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Settings</span></a>
+                                        class="align-middle">Settings</span></a> --}}
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"><i
                                         class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
@@ -149,19 +149,19 @@
                 <!-- Dark Logo-->
                 <a href="{{ route('super.dashboard') }}" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset($small_logo) }}" alt="" height="22">
+                        <img src="{{ asset($dashboard_logo) }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset($small_logo) }}" alt="" height="17">
+                        <img src="{{ asset($dashboard_logo) }}" alt="" height="17">
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="{{ route('dashboard') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset($small_logo) }}" alt="" height="22">
+                        <img src="{{ asset($dashboard_logo) }}" alt="" height="22">
                     </span>
                     <span class="logo-lg" >
-                        <img src="{{ asset($small_logo) }}" alt="Logo" width="70">
+                        <img src="{{ asset($dashboard_logo) }}" alt="Logo" width="70">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -194,13 +194,19 @@
                        <li class="nav-item">
                             <a class="nav-link menu-link {{ request()->routeIs('add.employee') ? 'active' : '' }}"
                                 href="{{ route('add.employee') }}">
-                                <i class="mdi mdi-plus"></i> <span>Add Employee</span>
+                                <i class="mdi mdi-plus"></i> <span>Add Client</span>
                             </a>
                         </li>
                        <li class="nav-item">
                             <a class="nav-link menu-link {{ request()->routeIs('employee.list') ? 'active' : '' }}"
                                 href="{{ route('employee.list') }}">
-                                <i class="mdi mdi-form-select"></i> <span>All Employee</span>
+                                <i class="mdi mdi-form-select"></i> <span>All Client</span>
+                            </a>
+                        </li>
+                       <li class="nav-item">
+                            <a class="nav-link menu-link {{ request()->routeIs('card.index') ? 'active' : '' }}"
+                                href="{{ route('card.index') }}">
+                                <i class="mdi mdi-magnify"></i> <span>Card Search</span>
                             </a>
                         </li>
 

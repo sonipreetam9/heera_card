@@ -10,6 +10,10 @@ class IndexController extends Controller
         $page_title="Home";
         return view('index',compact('page_title'));
     }
+    public function termIndex(){
+        $page_title="Terms and Conditions";
+        return view('term&conditions',compact('page_title'));
+    }
     public function overview(){
          $page_title="Overview";
         return view('overview',compact('page_title'));

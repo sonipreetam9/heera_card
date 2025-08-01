@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $table = 'clinic_branches';
     protected $fillable = [
+        'id',
         'branch_code',
         'name',
         'nickname',
@@ -54,4 +55,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+   
 }

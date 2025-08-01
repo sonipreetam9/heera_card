@@ -19,7 +19,7 @@
                 <div class="col">
                     <div class="p-2">
                         <h3 class="text-white mb-1">{{ Auth::user()->name }} {{ Auth::user()->nickname }}</h3>
-                        <p class="text-white text-opacity-75">Owner & Founder</p>
+                        {{-- <p class="text-white text-opacity-75">Owner & Founder</p> --}}
                         <div class="hstack text-white-50 gap-1">
                             <div class="me-2"><i
                                     class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>{{
@@ -45,58 +45,18 @@
                         <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
 
                         </ul>
-                        <div class="flex-shrink-0">
+                        {{-- <div class="flex-shrink-0">
                             <a href="pages-profile-settings.html" class="btn btn-success"><i
                                     class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- Tab panes -->
                     <div class="tab-content pt-4 text-muted">
                         <div class="tab-pane active" id="overview-tab" role="tabpanel">
                             <div class="row">
-                                <div class="col-xxl-3">
-
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title mb-3">Personal Information</h5>
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th class="ps-0" scope="row">Full Name :</th>
-                                                            <td class="text-muted">{{ Auth::user()->name }} {{
-                                                                Auth::user()->nickname }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th class="ps-0" scope="row">Mobile :</th>
-                                                            <td class="text-muted">+(91) {{ Auth::user()->phone }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th class="ps-0" scope="row">E-mail :</th>
-                                                            <td class="text-muted">{{ Auth::user()->email }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th class="ps-0" scope="row">Location :</th>
-                                                            <td class="text-muted">{{ Auth::user()->address }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th class="ps-0" scope="row">Joining Date</th>
-                                                            <td class="text-muted">{{
-                                                                Auth::user()->created_at->format('d-M-Y') }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div><!-- end card body -->
-                                    </div><!-- end card -->
-
-
-
-                                </div>
+                      
                                 <!--end col-->
-                                <div class="col-xxl-9">
+                                {{-- <div class="col-xxl-9">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title mb-3">About</h5>
@@ -152,7 +112,7 @@
 
 
 
-                                </div>
+                                </div> --}}
                                 <!--end col-->
 
 

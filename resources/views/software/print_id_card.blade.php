@@ -1,284 +1,215 @@
 @extends('software.layouts.header')
 @section('software')
+    <style>
+        .id-card {
+            width: 420px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
 
-<style>
-    .id-card {
-        width: 340px;
-        height: 540px;
-        margin: auto;
-        background: #fff;
-        border-radius: 14px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.16);
-        font-family: 'Arial', sans-serif;
-        overflow: hidden;
-        position: relative;
-    }
+        /* Watermark background */
+        .id-card::before {
+            content: "";
+            position: absolute;
+            top: 60%;
+            left: 65%;
+            width: 80%;
+            height: 80%;
+            background-image: url('{{ asset($small_logo) }}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.09;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    .id-card-front,
-    .id-card-back {
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        background: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-    }
+        .abha-header,
+        .abha-body,
+        .info-section,
+        .back-info {
+            position: relative;
+            z-index: 1;
+            background: transparent;
+        }
 
-    .id-card-front {
-        background: linear-gradient(to bottom, #2682d5 0px, #d2e7fa 80px, #fff 120px);
-    }
+        .abha-header {
+            background-color: #00347a;
+            color: white;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    .id-card-logo {
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
+        .abha-header img.left-logo,
+        .abha-header img.right-logo {
+            height: 48px;
+        }
 
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        border: 6px solid #fff;
-        object-fit: cover;
-        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
-        margin-bottom: 16px;
-    }
+        .abha-header .header-text {
+            text-align: center;
+            font-size: 14px;
+            flex-grow: 1;
+            font-weight: 800;
+        }
 
-    .id-card h2 {
-        font-size: 26px;
-        font-weight: bold;
-        margin-bottom: 4px;
-        margin-top: 0;
-        color: #181818;
-        letter-spacing: 0.5px;
-    }
+        .abha-body {
+            display: flex;
+            padding: 20px 16px;
+        }
 
-    .role-btn {
-        background: #2682d5;
-        color: #fff;
-        border-radius: 22px;
-        padding: 2px 28px 5px 28px;
-        font-size: 16px;
-        margin-bottom: 16px;
-        margin-top: 6px;
-        font-weight: 500;
-        display: inline-block;
-    }
+        .left-section,
+        .right-section {
+            text-align: center;
+        }
 
-    .id-details {
-        text-align: left;
-        width: 80%;
-        margin: 0 auto 18px auto;
-        color: #222;
-        font-size: 15px;
-    }
+        .profile-photo {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid #ccc;
+        }
 
-    .id-details p {
-        margin: 4px 0;
-        letter-spacing: 0.2px;
-    }
+        .qr-code {
+            width: 100px;
+            height: 100px;
+        }
 
-    .field-label {
-        font-weight: 600;
-        width: 76px;
-        display: inline-block;
-    }
+        .info-section {
+            padding: 0px 20px;
+            font-size: 14px;
+            color: #111;
+        }
 
-    .barcode-area {
-        width: 100%;
-        padding: 0 22px;
-        margin-top: 12px;
-    }
+        .info-section p {
+            margin: 6px 0;
+            line-height: 1.4;
+        }
 
-    .barcode {
-        width: 100%;
-        text-align: center;
-        font-weight: bold;
-        font-size: 18px;
-        padding: 16px 0 8px 0;
-        letter-spacing: 4px;
-        border: 3px solid #2682d5;
-        border-radius: 12px;
-        background: #e0f0ff;
-        box-shadow: 0 3px 8px rgba(38, 130, 213, 0.16);
-        margin-top: 5px;
-        margin-bottom: 8px;
-        font-family: 'Courier New', Courier, monospace;
-        transition: border-color 0.3s, background 0.3s;
-    }
+        .abha-back .back-info {
+            padding: 20px;
+            font-size: 13px;
+        }
 
-    .barcode:hover {
-        border-color: #174d8c;
-        background: #d0eaff;
-    }
+        .abha-back .back-info ol {
+            margin-left: 18px;
+            margin-bottom: 12px;
+        }
 
-    /* Back Style */
-    .id-card-back {
-        background: #f9fbfe;
-        padding-top: 28px;
-        justify-content: flex-start;
-    }
+        .signature-block {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-    .id-card-back .id-card-logo {
-        margin-bottom: 16px;
-    }
+        .signature-block p {
+            font-size: 14px;
+            margin-top: 4px;
+            letter-spacing: 0.8px;
+        }
 
-    .terms-title {
-        text-align: center;
-        font-weight: bold;
-        font-size: 19px;
-        margin-bottom: 16px;
-        letter-spacing: 1.2px;
-    }
-
-    .terms-list {
-        font-size: 15px;
-        margin-bottom: 22px;
-        width: 90%;
-        margin-left: 5%;
-        color: #272727;
-    }
-
-    .terms-list li {
-        margin-bottom: 10px;
-        line-height: 1.5;
-    }
-
-    .dates-block {
-        text-align: left;
-        width: 78%;
-        margin: 0 auto 24px auto;
-    }
-
-    .dates-block p {
-        font-size: 15px;
-        margin: 2px 0;
-    }
-
-    .signature-block {
-        text-align: center;
-        margin-top: 30px;
-    }
-
-    .signature-block img {
-        height: 34px;
-    }
-
-    .signature-block p {
-        font-size: 16px;
-        margin-top: 6px;
-        letter-spacing: 1px;
-    }
-
-    .button-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 32px;
-        gap: 18px;
-        flex-wrap: wrap;
-    }
-
-    .back-btn {
-        display: inline-block;
-        font-weight: 600;
-        padding: 8px 24px;
-        border-radius: 20px;
-        background: #999;
-        color: #fff;
-        text-decoration: none;
-        margin-right: 10px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-        transition: background-color 0.3s;
-        border: none;
-    }
-
-    .back-btn:hover {
-        background: #666;
-    }
-
-    .print-btn {
-        display: inline-block;
-        text-align: center;
-        margin-top: 0;
-    }
-
-    @media print {
         .button-container {
-            display: none;
+            text-align: center;
+            margin-top: 20px;
         }
 
-        body {
-            background: #fff !important;
+        .button-container a,
+        .button-container button {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            color: white;
+            background-color: #1d4f91;
+            cursor: pointer;
+            text-decoration: none;
         }
-    }
-</style>
 
-<div class="page-content">
-    <div class="container-fluid">
-        <div class="row justify-content-center" style="margin-top:30px;">
-            <!-- Front Side -->
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="id-card">
-                    <div class="id-card-front">
-                        <img src="{{ asset('path-to-logo.png') }}" class="id-card-logo" width="60">
-                        <img src="{{ asset($employee->image) }}" class="profile-pic">
-                        <h2>{{ $employee->name }}</h2>
-                        <div>
-                            <span class="role-btn">{{ $employee->occupation }}</span>
-                        </div>
-                        <div class="id-details">
-                            <p><span class="field-label">ID No:</span> {{ $employee->tag_id }}</p>
-                            <p><span class="field-label">Phone:</span> {{ $employee->phone }}</p>
-                            <p><span class="field-label">DOB:</span> {{
-                                \Carbon\Carbon::parse($employee->dob)->format('d-m-Y') }}</p>
-                            <p><span class="field-label">Gender:</span> {{ $employee->sex }}</p>
-                            <p><span class="field-label">From:</span> {{ $employee->city }}</p>
-                        </div>
-                        <div class="barcode-area">
-                            <div class="barcode">{{ $employee->tag_id }}</div>
-                        </div>
+        .button-container button.print-btn {
+            background-color: #dc3545;
+        }
+
+        @media print {
+            .button-container {
+                display: none;
+            }
+
+            body {
+                background: #fff;
+            }
+        }
+    </style>
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- FRONT SIDE -->
+            <div class="id-card abha-front">
+                <div class="abha-header">
+                    <img src="{{ asset($small_logo) }}" class="left-logo">
+                    <div class="header-text">
+                        <h4 class="text-white strong">SWASTH MUSKAN ID CARD</h4>
+                    </div>
+                    <img src="{{ asset($small_logo) }}" class="right-logo">
+                </div>
+
+                <div class="abha-body">
+                    <div class="left-section">
+                        <img src="{{ asset($employee->image) }}" class="profile-photo">
+                    </div>
+                    <div class="info-section">
+                        <p><strong>Name:</strong> {{ $employee->name }}</p>
+                        <p><strong>ID No:</strong> {{ $employee->tag_id }}</p>
+                        <p><strong>City:</strong> {{ $employee->city }}</p>
+                        <p><strong>Gender:</strong> {{ $employee->sex }}</p>
+                        <p><strong>DOB:</strong> {{ \Carbon\Carbon::parse($employee->dob)->format('d-m-Y') }}</p>
+                        <p><strong>Phone:</strong> {{ $employee->phone }}</p>
+                        <p><strong>Join Date:</strong> {{ \Carbon\Carbon::parse($employee->join_date)->format('d-m-Y') }}</p>
+                        <p><strong>Expire Date:</strong> {{ \Carbon\Carbon::parse($employee->expire_date)->format('d-m-Y') }}</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Back Side -->
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="id-card">
-                    <div class="id-card-back">
-                        <img src="{{ asset('path-to-logo.png') }}" class="id-card-logo" width="60">
-                        <div class="terms-title">TERMS & CONDITIONS</div>
-                        <ul class="terms-list">
-                            <li>Identification: Carry the ID card at all times during working hours for identification
-                                purposes.</li>
-                            <li>Authorized Use: The ID card is strictly for official use and should not be shared or
-                                used for unauthorized purposes.</li>
-                        </ul>
-                        <div class="dates-block">
-                            <p><span class="field-label">Join:</span> {{
-                                \Carbon\Carbon::parse($employee->join_date)->format('d-m-Y') }}</p>
-                            <p><span class="field-label">Expire:</span> {{
-                                \Carbon\Carbon::parse($employee->expire_date)->format('d-m-Y') }}</p>
-                        </div>
-                        <div class="signature-block">
-                            <img src="{{ asset('path-to-signature.png') }}">
-                            <p>Signature</p>
-                        </div>
+            <!-- BACK SIDE -->
+            <div class="id-card abha-back">
+                <div class="abha-header">
+                    <img src="{{ asset($small_logo) }}" class="left-logo">
+                    <div class="header-text">
+                        <h4 class="text-white strong">SWASTH MUSKAN ID CARD</h4>
+                    </div>
+                    <img src="{{ asset($small_logo) }}" class="right-logo">
+                </div>
+
+                <div class="back-info">
+                    <p><strong>Instructions:</strong></p>
+                    <ol>
+                        <li>Identification: Carry the ID card at all times during working hours for identification purposes.</li>
+                        <li>Authorized Use: The ID card is strictly for official use and should not be shared or used for unauthorized purposes.</li>
+                    </ol>
+
+                    <div class="signature-block">
+                        <img src="{{ asset($signature) }}" height="50">
+                        <p>Signature</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Navigation and Print Buttons -->
-        <div class="row">
-            <div class="col-12">
-                <div class="button-container">
-                    <a href="{{ route('employee.list') }}" class="back-btn">← Back</a>
-                    <button class="btn btn-danger print-btn" onclick="window.print()">Print ID Card</button>
-                </div>
+            <!-- Buttons -->
+            <div class="button-container">
+                <a href="{{ route('employee.list') }}">← Back</a>
+                <button class="print-btn" onclick="window.print()">Print ID Card</button>
             </div>
+
         </div>
     </div>
-</div>
 @endsection
