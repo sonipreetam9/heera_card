@@ -107,14 +107,7 @@
 
                         <div class="col-lg-6">
                             <div class="relative">
-                                <div class="abs bottom-0 end-0 m-5">
-                                    <div class="p-4 mb-4 bg-color text-light rounded-1 xs-hide text-center wow fadeInUp"
-                                        data-wow-delay=".0s">
-                                        <h1 class="fs-84 mb-1">10</h1>
-                                        <div class="fs-16 lh-1-5">Years of Experience</div>
-                                    </div>
-                                </div>
-                                <img src="{{ asset('assets/index/images/card.jpg') }}" class="w-100 rounded-1"
+                                <img src="{{ asset('assets/index/images/banner1.jpg') }}" class="w-100 rounded-1"
                                     alt="" />
                             </div>
                         </div>
@@ -128,7 +121,7 @@
                         <div class="col-lg-6">
                             <div class="relative">
                                 <div class="w-100 pb-5 wow scaleIn">
-                                    <img src="{{ asset('assets/index/images/card.jpg') }}" class="w-100 rounded-1"
+                                    <img src="{{ asset('assets/index/images/about.avif') }}" class="w-100 rounded-1"
                                         alt="">
                                 </div>
                             </div>
@@ -355,7 +348,8 @@
                                 <p class="mt-4 mb-0 text-dark op-6">
                                     "Main pehli baar dental card use kiya scaling ke liye – mujhe 50% discount mila!
                                     Doctor ne bahut ache se samjhaya aur pura treatment safe aur clean environment mein
-                                    hua. Starnext card dikhaaya aur discount turant apply ho gaya. Bahut hi faaydemand
+                                    hua. SWASTH MUSKAN card dikhaaya aur discount turant apply ho gaya. Bahut hi
+                                    faaydemand
                                     card hai."
                                 </p>
                             </blockquote>
@@ -387,7 +381,8 @@
                                 </div>
                                 <p class="mt-4 mb-0 text-dark op-6">
                                     "Mere bete ko toothache tha, clinic pe le gaye to unhone card offer bataya. Card
-                                    bana liya aur treatment pe 50% off mila. Bina card ke mehnga padta, lekin Starnext
+                                    bana liya aur treatment pe 50% off mila. Bina card ke mehnga padta, lekin SWASTH
+                                    MUSKAN
                                     waale card ne kaafi madad ki."
                                 </p>
                             </blockquote>
@@ -474,7 +469,7 @@
                         <div class="fw-bold text-white">
                             <i class="icofont-envelope me-2 id-color"></i>Send a Message
                         </div>
-                         <a href="mailto:Officialswasthmuskan@gmail.com">Officialswasthmuskan@gmail.com</a>
+                        <a href="mailto:Officialswasthmuskan@gmail.com">Officialswasthmuskan@gmail.com</a>
                     </div>
                 </div>
             </div>

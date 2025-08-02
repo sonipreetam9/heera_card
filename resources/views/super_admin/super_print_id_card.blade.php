@@ -174,8 +174,10 @@
                         <p><strong>Gender:</strong> {{ $employee->sex }}</p>
                         <p><strong>DOB:</strong> {{ \Carbon\Carbon::parse($employee->dob)->format('d-m-Y') }}</p>
                         <p><strong>Phone:</strong> {{ $employee->phone }}</p>
-                        <p><strong>Join Date:</strong> {{ \Carbon\Carbon::parse($employee->join_date)->format('d-m-Y') }}</p>
-                        <p><strong>Expire Date:</strong> {{ \Carbon\Carbon::parse($employee->expire_date)->format('d-m-Y') }}</p>
+                        <p><strong>Join Date:</strong> {{ \Carbon\Carbon::parse($employee->join_date)->format('d-m-Y') }}
+                        </p>
+                        <p><strong>Expire Date:</strong>
+                            {{ \Carbon\Carbon::parse($employee->expire_date)->format('d-m-Y') }}</p>
                     </div>
                 </div>
             </div>
@@ -193,8 +195,11 @@
                 <div class="back-info">
                     <p><strong>Instructions:</strong></p>
                     <ol>
-                        <li>Identification: Carry the ID card at all times during working hours for identification purposes.</li>
-                        <li>Authorized Use: The ID card is strictly for official use and should not be shared or used for unauthorized purposes.</li>
+                        <li>Identification: Carry the ID card at all times during working hours for identification purposes.
+                        </li>
+                        <li>Authorized Use: The ID card is strictly for official use and should not be shared or used for
+                            unauthorized purposes.</li>
+                        <li>Coverage Upto 1.5 lakh.</li>
                     </ol>
 
                     <div class="signature-block">

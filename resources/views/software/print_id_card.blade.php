@@ -195,6 +195,7 @@
                     <ol>
                         <li>Identification: Carry the ID card at all times during working hours for identification purposes.</li>
                         <li>Authorized Use: The ID card is strictly for official use and should not be shared or used for unauthorized purposes.</li>
+                        <li>Coverage Upto 1.5 lakh.</li>
                     </ol>
 
                     <div class="signature-block">
