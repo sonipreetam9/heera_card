@@ -7,7 +7,7 @@ use App\Models\AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 class SProfileController extends Controller
 {
     public function profile()
@@ -45,7 +45,13 @@ class SProfileController extends Controller
             $profile->in_hash = base64_encode($request->password); // Optional: for viewing
             $profile->save();
 
-            return redirect()->route('super.edit.profile', $empTag)->with('success', 'Profile updated successfully!');
+
+
+            Auth::guard('admin')->logout();
+
+
+
+            return redirect()->route('super.login')->with('success', 'Profile updated successfully!');
         } catch (\Exception $e) {
             return redirect()->route('super.edit.profile', $empTag)->with('error', 'Update failed: ' . $e->getMessage());
         }

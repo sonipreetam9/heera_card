@@ -96,10 +96,10 @@ class AuthController extends Controller
 
         $emailUsername = explode('@', $request->email)[0];
         $branch_code = strtoupper(
-                substr($request->name, 0, 4) .
-                substr($emailUsername, 0, 4) .
-                substr($request->city, 0, 4).
-                substr($request->phone, 0, 4),
+            substr($request->name, 0, 4) .
+            substr($emailUsername, 0, 4) .
+            substr($request->city, 0, 4) .
+            substr($request->phone, 0, 4),
         );
 
 
